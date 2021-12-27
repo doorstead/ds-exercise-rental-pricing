@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  doorstead:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: "doorstead"
+    ports:
+      - "8888:8888" # jupyter notebook
+      - "8889:8889" # jupyter lab
+    volumes:
+      - type: bind
+        source: .
+        target: /app
