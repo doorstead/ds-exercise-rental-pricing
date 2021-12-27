@@ -6,9 +6,9 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && \
     apt-get dist-upgrade -y
 
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+# RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 
-RUN apt-get install -y nodejs
+# RUN apt-get install -y nodejs
 
 WORKDIR /app
 
@@ -17,14 +17,12 @@ COPY . /app
 # upgrade pip
 RUN python -m pip install -U pip
 
-RUN python -m pip install jupyter jupyterlab \
-    jupyterlab-code-formatter isort black
+RUN python -m pip install jupyter jupyterlab
 
-# RUN jupyter serverextension enable --py \
-#     jupyterlab_code_formatter
+# RUN python -m pip install jupyterlab-code-formatter isort black
 
-RUN jupyter labextension install \
-    @ryantam626/jupyterlab_code_formatter
+# RUN jupyter labextension install \
+#     @ryantam626/jupyterlab_code_formatter
 
 # create virtual environment
 RUN python -m venv /opt/venv
